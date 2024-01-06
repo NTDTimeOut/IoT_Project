@@ -44,7 +44,7 @@ function RoomsListScreen(props) {
     });
 
     useEffect(() => {
-        document.title = "Trang danh sách phòng | SHOME";
+        document.title = "Trang danh sách phòng | Smart-Switch";
     }, []);
 
     useEffect(() => {

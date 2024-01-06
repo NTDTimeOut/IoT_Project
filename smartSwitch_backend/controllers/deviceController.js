@@ -1,9 +1,12 @@
 const mqtt = require("mqtt");
-const broker = "mqtt://broker.hivemq.com:1883";
 const topic = "/control_device";
 const Device = require("../models/Devices");
-const options = {};
-const client = mqtt.connect(broker, options);
+const clusterURL = 'mqtts://5f241dfe55694ac5aef9294cea4f51c7.s2.eu.hivemq.cloud:8883';
+const webclientOptions = {
+  username: 'IoT-test',
+  password: '12345678',
+};
+const client = mqtt.connect(clusterURL, webclientOptions);
 const Room = require("../models/Rooms");
 const Account = require("../models/Accounts");
 const pusher = require("../pusher");

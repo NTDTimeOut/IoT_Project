@@ -4,13 +4,13 @@ const sendEmail= async(email,subject,text)=>{
         const transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
-                user: "shomeforum@gmail.com",
+                user: "smartHomeforum@gmail.com",
                 pass: "JHK7gs87gjs@scx",
             },
         });
 
         await transporter.sendMail({
-            from: "shomeforum@gmail.com",
+            from: "smartHomeforum@gmail.com",
             to: email,
             subject: subject,
             text:'Mật khẩu mới: '+text 

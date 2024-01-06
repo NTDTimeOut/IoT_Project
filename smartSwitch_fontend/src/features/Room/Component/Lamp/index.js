@@ -70,8 +70,7 @@ function Lamp(props) {
                                                 }}
                                             >
                                                 {" - "}
-                                                Tự động bật ( Cường độ ánh sáng{" "}
-                                                {"<"}{" "}
+                                                Tự động bật ( Cường độ ánh sáng {"<"}{" "}
                                                 {item?.automatic?.lightValue} )
                                             </span>
                                         )}

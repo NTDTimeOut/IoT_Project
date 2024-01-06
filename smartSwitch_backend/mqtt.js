@@ -1,21 +1,20 @@
+require('dotenv').config({ path: '.env' });
 const mqtt = require("mqtt");
 const { updateData, retrieveData } = require("./controllers/deviceController");
 
-const options = {
-    // Clean session
-    // clean: true,
-    // connectTimeout: 30000,
-    // Auth
-    // clientId: "74c1532c-df68-470f-9675-0df3aea06bf5",
+const clusterURL = process.env.CLUSTER_URL;
+const webclientOptions = {
+  username: process.env.USER_NAME,
+  password: process.env.PASSWORD,
 };
-const broker = "mqtt://broker.hivemq.com:1883";
 const topic = "/data_device";
 const connectMQTT = () => {
     try {
-        const client = mqtt.connect(broker, options);
-        console.log("MQTT connected!");
+        const client = mqtt.connect(clusterURL, webclientOptions);
+        
         client.on("connect", () => {
             client.subscribe(topic);
+            console.log("MQTT connected!");
         });
         client.on("message", (tp, msg) => {
             var data = JSON.parse(msg);
