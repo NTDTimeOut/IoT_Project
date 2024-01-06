@@ -86,8 +86,8 @@ function Account(props) {
                         <div
                             className="card-header rounded-top bgi-size-cover h-200px Account_CoverImage"
                             style={{
-                                backgroundPosition: "100% 50%",
-                                backgroundImage: `url(https://removal.ai/wp-content/uploads/2021/05/image9-1.png)`,
+                                backgroundPosition: "100% 90%",
+                                backgroundImage: `url(https://www.thefastmode.com/media/k2/items/src/575bb286c7cd7270832a01e317813449.jpg?t=20220608_040449)`,
                             }}
                         ></div>
                         <div className="card-body mt-n19">
