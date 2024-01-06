@@ -44,7 +44,7 @@ function Dashboard(props) {
     );
 
     useEffect(() => {
-        document.title = "Trang quản lý nhà | SHOME"
+        document.title = "Trang quản lý nhà | Smart-Switch"
      }, []);
 
     function handleNavigate(url) {

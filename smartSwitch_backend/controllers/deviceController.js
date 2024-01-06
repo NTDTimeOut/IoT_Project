@@ -1,9 +1,13 @@
+require('dotenv').config({ path: '.env' });
 const mqtt = require("mqtt");
-const broker = "mqtt://broker.hivemq.com:1883";
 const topic = "/control_device";
 const Device = require("../models/Devices");
-const options = {};
-const client = mqtt.connect(broker, options);
+const clusterURL = process.env.CLUSTER_URL;
+const webclientOptions = {
+  username: process.env.USER_NAME,
+  password: process.env.PASSWORD,
+};
+const client = mqtt.connect(clusterURL, webclientOptions);
 const Room = require("../models/Rooms");
 const Account = require("../models/Accounts");
 const pusher = require("../pusher");
