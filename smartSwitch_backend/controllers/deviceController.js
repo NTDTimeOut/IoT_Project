@@ -1,10 +1,11 @@
+require('dotenv').config({ path: '.env' });
 const mqtt = require("mqtt");
 const topic = "/control_device";
 const Device = require("../models/Devices");
-const clusterURL = 'mqtts://5f241dfe55694ac5aef9294cea4f51c7.s2.eu.hivemq.cloud:8883';
+const clusterURL = process.env.CLUSTER_URL;
 const webclientOptions = {
-  username: 'IoT-test',
-  password: '12345678',
+  username: process.env.USER_NAME,
+  password: process.env.PASSWORD,
 };
 const client = mqtt.connect(clusterURL, webclientOptions);
 const Room = require("../models/Rooms");
