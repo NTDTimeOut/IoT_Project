@@ -24,7 +24,7 @@ function SignInScreen(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        document.title = "Trang đăng nhập | s-Switch"
+        document.title = "Trang đăng nhập | Smart-Switch"
      }, []);
 
     const formik = useFormik({

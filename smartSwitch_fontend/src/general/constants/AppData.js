@@ -21,8 +21,8 @@ const AppData = {
         { value: "4", text: "Thiết bị 4" },
         { value: "5", text: "Thiết bị 5" },
         { value: "6", text: "Thiết bị 6" },
-        { value: "7", text: "Thiết bị 7" },
-        { value: "8", text: "Thiết bị 8" },
+        // { value: "7", text: "Thiết bị 7" },
+        // { value: "8", text: "Thiết bị 8" },
     ],
     temperatureOption: [
         { value: "800", text: "16°C" },
