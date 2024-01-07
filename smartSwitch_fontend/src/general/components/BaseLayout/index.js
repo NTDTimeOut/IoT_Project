@@ -43,7 +43,7 @@ function BaseLayout(props) {
     };
     return (
         <div
-            className="min-vh-100 bg-light d-flex"
+            className="BaseScreen min-vh-100 bg-light d-flex"
             // style={{flexFlow: 'row wrap'}}
         >
             {/* side bar */}

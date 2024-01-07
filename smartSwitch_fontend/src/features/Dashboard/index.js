@@ -95,361 +95,363 @@ function Dashboard(props) {
     // };
 
     return (
-        <div className="container-lg">
-            <div className="row g-5 g-xl-10 mb-5 mb-xl-10">
-                <div className="col-lg-4 p-5">
-                    <div className="bg-white position-relative rounded-lg shadow">
-                        <div className="position-absolute top-0 right-0 mt-4 me-4">
-                            <button
-                                className="LogoutBtn shadow"
-                                onClick={handleLogOut}
-                            >
-                                Đăng xuất
-                            </button>
-                        </div>
-                        <div className="d-flex flex-column">
-                            <img
-                                className="BackgroundAccount"
-                                src={BackgroundAccount}
-                                alt=""
-                            />
-                            <div>
-                                <img
-                                    className="ImgAccount"
-                                    src={
-                                        currentAccount?.avatar ||
-                                        UserHelper.getRandomAvatarUrl()
-                                    }
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src =
-                                            UserHelper.getRandomAvatarUrl();
-                                    }}
-                                    alt="avatar"
-                                />
+        <div className="DashboardScreen min-vh-100">
+            <div className="container-lg">
+                <div className="row g-5 g-xl-10 mb-5 mb-xl-10">
+                    <div className="col-lg-4 p-5">
+                        <div className="bg-white position-relative rounded-lg shadow">
+                            <div className="position-absolute top-0 right-0 mt-4 me-4">
+                                <button
+                                    className="LogoutBtn shadow"
+                                    onClick={handleLogOut}
+                                >
+                                    Đăng xuất
+                                </button>
                             </div>
-                            <div className="row px-5 pb-10">
-                                <div className="col-12 fs-5 fw-bold mt-2 text-dark-75">
-                                    {currentAccount?.fullname}
+                            <div className="d-flex flex-column">
+                                <img
+                                    className="BackgroundAccount"
+                                    src={BackgroundAccount}
+                                    alt=""
+                                />
+                                <div>
+                                    <img
+                                        className="ImgAccount"
+                                        src={
+                                            currentAccount?.avatar ||
+                                            UserHelper.getRandomAvatarUrl()
+                                        }
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src =
+                                                UserHelper.getRandomAvatarUrl();
+                                        }}
+                                        alt="avatar"
+                                    />
                                 </div>
-                                <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
-                                    <b>Giới tính:</b> {currentAccount?.gender}
-                                </div>
-                                <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
-                                    <b>Ngày sinh:</b>{" "}
-                                    {Utils.formatDateTime(
-                                        currentAccount?.dob,
-                                        "DD-MM-YYYY"
-                                    )}
-                                </div>
-                                <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
-                                    <b>Địa chỉ:</b> {currentAccount?.address}
-                                </div>
-                                <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
-                                    <b>Số điện thoại:</b>{" "}
-                                    {currentAccount?.phone}
+                                <div className="row px-5 pb-10">
+                                    <div className="col-12 fs-5 fw-bold mt-2 text-dark-75">
+                                        {currentAccount?.fullname}
+                                    </div>
+                                    <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
+                                        <b>Giới tính:</b> {currentAccount?.gender}
+                                    </div>
+                                    <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
+                                        <b>Ngày sinh:</b>{" "}
+                                        {Utils.formatDateTime(
+                                            currentAccount?.dob,
+                                            "DD-MM-YYYY"
+                                        )}
+                                    </div>
+                                    <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
+                                        <b>Địa chỉ:</b> {currentAccount?.address}
+                                    </div>
+                                    <div className="col-12 col-sm-5 col-lg-12 ms-4 mt-2">
+                                        <b>Số điện thoại:</b>{" "}
+                                        {currentAccount?.phone}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-lg-8 p-5">
-                    <div className="d-flex flex-column ">
-                        <div
-                            className="d-flex p-3 rounded-lg shadow flex-wrap"
-                            style={{ backgroundColor: "#f1f1f1" }}
-                        >
-                            <div className="d-flex flex-wrap">
-                                <div
-                                    className={`ButtonNavigate ${
-                                        selected === "owner" &&
-                                        "ButtonNavigate_active"
-                                    }`}
-                                    onClick={() => setSelected("owner")}
-                                >
-                                    Nhà đang có
+                    <div className="col-lg-8 p-5">
+                        <div className="d-flex flex-column ">
+                            <div
+                                className="d-flex p-3 rounded-lg shadow flex-wrap"
+                                style={{ backgroundColor: "#f1f1f1" }}
+                            >
+                                <div className="d-flex flex-wrap">
+                                    <div
+                                        className={`ButtonNavigate ${
+                                            selected === "owner" &&
+                                            "ButtonNavigate_active"
+                                        }`}
+                                        onClick={() => setSelected("owner")}
+                                    >
+                                        Nhà đang có
+                                    </div>
+                                    <div
+                                        className={`ButtonNavigate ${
+                                            selected === "requesting" &&
+                                            "ButtonNavigate_active"
+                                        }`}
+                                        onClick={() => setSelected("requesting")}
+                                    >
+                                        Nhà đang yêu cầu
+                                    </div>
+                                    <div
+                                        className={`ButtonNavigate ${
+                                            selected === "other-homes" &&
+                                            "ButtonNavigate_active"
+                                        }`}
+                                        onClick={async () => {
+                                            setSelected("other-homes");
+                                            await dispatch(
+                                                thunkGetOtherHomesList(filters)
+                                            );
+                                        }}
+                                    >
+                                        Nhà khác
+                                    </div>
                                 </div>
-                                <div
-                                    className={`ButtonNavigate ${
-                                        selected === "requesting" &&
-                                        "ButtonNavigate_active"
-                                    }`}
-                                    onClick={() => setSelected("requesting")}
-                                >
-                                    Nhà đang yêu cầu
-                                </div>
-                                <div
-                                    className={`ButtonNavigate ${
-                                        selected === "other-homes" &&
-                                        "ButtonNavigate_active"
-                                    }`}
-                                    onClick={async () => {
-                                        setSelected("other-homes");
-                                        await dispatch(
-                                            thunkGetOtherHomesList(filters)
-                                        );
-                                    }}
-                                >
-                                    Nhà khác
+                                <div className="d-flex flex-fill justify-content-end align-items-center">
+                                    <div
+                                        className={`ButtonNavigate d-flex justify-content-center align-items-center ${
+                                            selected === "create-home" &&
+                                            "ButtonNavigate_active"
+                                        }`}
+                                        onClick={() => setSelected("create-home")}
+                                    >
+                                        <i className="far fa-plus-circle me-2"></i>
+                                        Thêm nhà mới
+                                    </div>
                                 </div>
                             </div>
-                            <div className="d-flex flex-fill justify-content-end align-items-center">
-                                <div
-                                    className={`ButtonNavigate d-flex justify-content-center align-items-center ${
-                                        selected === "create-home" &&
-                                        "ButtonNavigate_active"
-                                    }`}
-                                    onClick={() => setSelected("create-home")}
-                                >
-                                    <i className="far fa-plus-circle me-2"></i>
-                                    Thêm nhà mới
-                                </div>
-                            </div>
-                        </div>
-                        <div className="TableHomesList bg-white p-8 rounded-lg shadow mt-5">
-                            {isGettingInfor && (
-                                <div>
-                                    <span>Đang lấy dữ liệu...</span>
-                                    <span className="spinner spinner-loader spinner-primary"></span>
-                                </div>
-                            )}
-                            {selected === "owner" && (
-                                <div>
-                                    {ownerList?.length > 0 ? (
-                                        <BootstrapTable className="BootstrapTable" striped bordered hover responsive>
-                                            <thead>
-                                                <tr>
-                                                    <th>Nhà</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Trạng thái</th>
-                                                    <th>Thực hiện</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {ownerList.map((item) => (
-                                                    <tr key={item._id}>
-                                                        <td>{item.homeName}</td>
-                                                        <td>
-                                                            {item.homeAddress}
-                                                        </td>
-                                                        <td>Chủ nhà</td>
-                                                        <td>
-                                                            <button
-                                                                className="ButtonPrimary"
-                                                                onClick={async () => {
-                                                                    await dispatch(
-                                                                        thunkGetHomeData(
-                                                                            {
-                                                                                homeId: item._id,
-                                                                            }
-                                                                        )
-                                                                    );
-                                                                    navigate(
-                                                                        "/home"
-                                                                    );
-                                                                }}
-                                                            >
-                                                                Chi tiết nhà
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </BootstrapTable>
-                                    ) : (
-                                        !isGettingInfor && (
-                                            <div>Danh sách trống</div>
-                                        )
-                                    )}
-                                </div>
-                            )}
-                            {selected === "requesting" && (
-                                <div>
-                                    {requestingList?.length > 0 ? (
-                                        <BootstrapTable className="BootstrapTable" striped bordered hover>
-                                            <thead>
-                                                <tr>
-                                                    <th>Nhà</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Trạng thái</th>
-                                                    <th>Thực hiện</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {requestingList.map((item) => (
-                                                    <tr key={item._id}>
-                                                        <td>
-                                                            <div className="">
-                                                                {item.homeName}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            {item.homeAddress}
-                                                        </td>
-                                                        <td>Đang yêu cầu</td>
-                                                        <td>
-                                                            <button
-                                                                className="ButtonCancel"
-                                                                onClick={async () => {
-                                                                    await dispatch(
-                                                                        thunkRefuseJoinHome(
-                                                                            {
-                                                                                homeId: item._id,
-                                                                                accountId:
-                                                                                    currentAccount._id,
-                                                                            }
-                                                                        )
-                                                                    );
-                                                                    await dispatch(
-                                                                        thunkGetAccountInfor()
-                                                                    );
-                                                                }}
-                                                            >
-                                                                Hủy yêu cầu
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </BootstrapTable>
-                                    ) : (
-                                        <div>Danh sách trống</div>
-                                    )}
-                                </div>
-                            )}
-                            {selected === "other-homes" && (
-                                <div>
-                                    {otherHomesList?.length > 0 ? (
-                                        <div>
-                                            <BaseSearchBar
-                                                placeholder="Tìm kiếm nhà"
-                                                className="mb-5"
-                                                value={filters.q}
-                                                name="homeFilter"
-                                                onSubmit={(value) => {
-                                                    setFilters({
-                                                        ...filters,
-                                                        q: value,
-                                                    });
-                                                }}
-                                            />
-                                            <BootstrapTable className="BootstrapTable"
-                                                striped
-                                                bordered
-                                                hover
-                                            >
+                            <div className="TableHomesList bg-white p-8 rounded-lg shadow mt-5">
+                                {isGettingInfor && (
+                                    <div>
+                                        <span>Đang lấy dữ liệu...</span>
+                                        <span className="spinner spinner-loader spinner-primary"></span>
+                                    </div>
+                                )}
+                                {selected === "owner" && (
+                                    <div>
+                                        {ownerList?.length > 0 ? (
+                                            <BootstrapTable className="BootstrapTable" striped bordered hover responsive>
                                                 <thead>
                                                     <tr>
                                                         <th>Nhà</th>
                                                         <th>Địa chỉ</th>
+                                                        <th>Trạng thái</th>
                                                         <th>Thực hiện</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {otherHomesList.map(
-                                                        (item) => (
-                                                            <tr key={item._id}>
-                                                                <td>
-                                                                    {item.name}
-                                                                </td>
-                                                                <td>
-                                                                    {
-                                                                        item.address
-                                                                    }
-                                                                </td>
-                                                                <td>
-                                                                    <button
-                                                                        className="ButtonPrimary"
-                                                                        onClick={async () => {
-                                                                            await dispatch(
-                                                                                thunkRequestToJoinHome(
-                                                                                    {
-                                                                                        homeId: item._id,
-                                                                                    }
-                                                                                )
-                                                                            );
-                                                                            await dispatch(
-                                                                                thunkGetOtherHomesList()
-                                                                            );
-                                                                            await dispatch(
-                                                                                thunkGetAccountInfor()
-                                                                            );
-                                                                        }}
-                                                                    >
-                                                                        Gửi yêu
-                                                                        cầu
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    )}
+                                                    {ownerList.map((item) => (
+                                                        <tr key={item._id}>
+                                                            <td>{item.homeName}</td>
+                                                            <td>
+                                                                {item.homeAddress}
+                                                            </td>
+                                                            <td>Chủ nhà</td>
+                                                            <td>
+                                                                <button
+                                                                    className="ButtonPrimary"
+                                                                    onClick={async () => {
+                                                                        await dispatch(
+                                                                            thunkGetHomeData(
+                                                                                {
+                                                                                    homeId: item._id,
+                                                                                }
+                                                                            )
+                                                                        );
+                                                                        navigate(
+                                                                            "/home"
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    Chi tiết nhà
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
                                                 </tbody>
                                             </BootstrapTable>
-                                        </div>
-                                    ) : (
-                                        !isGettingDataList && (
+                                        ) : (
+                                            !isGettingInfor && (
+                                                <div>Danh sách trống</div>
+                                            )
+                                        )}
+                                    </div>
+                                )}
+                                {selected === "requesting" && (
+                                    <div>
+                                        {requestingList?.length > 0 ? (
+                                            <BootstrapTable className="BootstrapTable" striped bordered hover>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nhà</th>
+                                                        <th>Địa chỉ</th>
+                                                        <th>Trạng thái</th>
+                                                        <th>Thực hiện</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {requestingList.map((item) => (
+                                                        <tr key={item._id}>
+                                                            <td>
+                                                                <div className="">
+                                                                    {item.homeName}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                {item.homeAddress}
+                                                            </td>
+                                                            <td>Đang yêu cầu</td>
+                                                            <td>
+                                                                <button
+                                                                    className="ButtonCancel"
+                                                                    onClick={async () => {
+                                                                        await dispatch(
+                                                                            thunkRefuseJoinHome(
+                                                                                {
+                                                                                    homeId: item._id,
+                                                                                    accountId:
+                                                                                        currentAccount._id,
+                                                                                }
+                                                                            )
+                                                                        );
+                                                                        await dispatch(
+                                                                            thunkGetAccountInfor()
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    Hủy yêu cầu
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </BootstrapTable>
+                                        ) : (
                                             <div>Danh sách trống</div>
-                                        )
-                                    )}
-                                </div>
-                            )}
-                            {selected === "create-home" && (
-                                <div>
-                                    <form
-                                        className="CreateHomeForm"
-                                        onSubmit={formik.handleSubmit}
-                                    >
-                                        <div>
-                                            <h1
-                                                style={{
-                                                    fontWeight: "600",
-                                                    textAlign: "center",
-                                                }}
-                                            >
-                                                Thêm nhà mới
-                                            </h1>
+                                        )}
+                                    </div>
+                                )}
+                                {selected === "other-homes" && (
+                                    <div>
+                                        {otherHomesList?.length > 0 ? (
                                             <div>
-                                                <BaseTextField
-                                                    name="name"
-                                                    placeholder="Nhập tên ngôi nhà..."
-                                                    label="Nhà"
-                                                    additionLabelClassName="fs-5 fw-bold"
-                                                    fieldHelper={formik.getFieldHelpers(
-                                                        "name"
-                                                    )}
-                                                    fieldProps={formik.getFieldProps(
-                                                        "name"
-                                                    )}
-                                                    fieldMeta={formik.getFieldMeta(
-                                                        "name"
-                                                    )}
+                                                <BaseSearchBar
+                                                    placeholder="Tìm kiếm nhà"
+                                                    className="mb-5"
+                                                    value={filters.q}
+                                                    name="homeFilter"
+                                                    onSubmit={(value) => {
+                                                        setFilters({
+                                                            ...filters,
+                                                            q: value,
+                                                        });
+                                                    }}
+                                                />
+                                                <BootstrapTable className="BootstrapTable"
+                                                    striped
+                                                    bordered
+                                                    hover
+                                                >
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nhà</th>
+                                                            <th>Địa chỉ</th>
+                                                            <th>Thực hiện</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {otherHomesList.map(
+                                                            (item) => (
+                                                                <tr key={item._id}>
+                                                                    <td>
+                                                                        {item.name}
+                                                                    </td>
+                                                                    <td>
+                                                                        {
+                                                                            item.address
+                                                                        }
+                                                                    </td>
+                                                                    <td>
+                                                                        <button
+                                                                            className="ButtonPrimary"
+                                                                            onClick={async () => {
+                                                                                await dispatch(
+                                                                                    thunkRequestToJoinHome(
+                                                                                        {
+                                                                                            homeId: item._id,
+                                                                                        }
+                                                                                    )
+                                                                                );
+                                                                                await dispatch(
+                                                                                    thunkGetOtherHomesList()
+                                                                                );
+                                                                                await dispatch(
+                                                                                    thunkGetAccountInfor()
+                                                                                );
+                                                                            }}
+                                                                        >
+                                                                            Gửi yêu
+                                                                            cầu
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        )}
+                                                    </tbody>
+                                                </BootstrapTable>
+                                            </div>
+                                        ) : (
+                                            !isGettingDataList && (
+                                                <div>Danh sách trống</div>
+                                            )
+                                        )}
+                                    </div>
+                                )}
+                                {selected === "create-home" && (
+                                    <div>
+                                        <form
+                                            className="CreateHomeForm"
+                                            onSubmit={formik.handleSubmit}
+                                        >
+                                            <div>
+                                                <h1
+                                                    style={{
+                                                        fontWeight: "600",
+                                                        textAlign: "center",
+                                                    }}
+                                                >
+                                                    Thêm nhà mới
+                                                </h1>
+                                                <div>
+                                                    <BaseTextField
+                                                        name="name"
+                                                        placeholder="Nhập tên ngôi nhà..."
+                                                        label="Nhà"
+                                                        additionLabelClassName="fs-5 fw-bold"
+                                                        fieldHelper={formik.getFieldHelpers(
+                                                            "name"
+                                                        )}
+                                                        fieldProps={formik.getFieldProps(
+                                                            "name"
+                                                        )}
+                                                        fieldMeta={formik.getFieldMeta(
+                                                            "name"
+                                                        )}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <BaseTextField
+                                                        name="address"
+                                                        placeholder="Nhập địa chỉ ngôi nhà..."
+                                                        label="Địa chỉ"
+                                                        additionLabelClassName="fs-5 fw-bold"
+                                                        fieldHelper={formik.getFieldHelpers(
+                                                            "address"
+                                                        )}
+                                                        fieldProps={formik.getFieldProps(
+                                                            "address"
+                                                        )}
+                                                        fieldMeta={formik.getFieldMeta(
+                                                            "address"
+                                                        )}
+                                                    />
+                                                </div>
+                                                <AppButton
+                                                    className="btn-blue mt-5 w-100"
+                                                    text="Thêm nhà"
                                                 />
                                             </div>
-                                            <div>
-                                                <BaseTextField
-                                                    name="address"
-                                                    placeholder="Nhập địa chỉ ngôi nhà..."
-                                                    label="Địa chỉ"
-                                                    additionLabelClassName="fs-5 fw-bold"
-                                                    fieldHelper={formik.getFieldHelpers(
-                                                        "address"
-                                                    )}
-                                                    fieldProps={formik.getFieldProps(
-                                                        "address"
-                                                    )}
-                                                    fieldMeta={formik.getFieldMeta(
-                                                        "address"
-                                                    )}
-                                                />
-                                            </div>
-                                            <AppButton
-                                                className="btn-blue mt-5 w-100"
-                                                text="Thêm nhà"
-                                            />
-                                        </div>
-                                    </form>
-                                </div>
-                            )}
+                                        </form>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
