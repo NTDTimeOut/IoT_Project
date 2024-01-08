@@ -45,7 +45,7 @@
   }
   
   input:checked + .sliderr {
-    background-color: #7fbcff;
+    background-image: linear-gradient(cyan , blue);
   }
   
   input:hover + .sliderr {

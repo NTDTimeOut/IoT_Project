@@ -193,7 +193,7 @@ function DevicesListScreen(props) {
                         </div>
                     </div>
                 ) : (
-                    <div className="d-flex justify-content-center align-items-center fs-4 mt-30">
+                    <div className="d-flex justify-content-center align-items-center fs-16 mt-30 rounded bg-info text-white">
                         Chưa có thiết bị
                     </div>
                 )}

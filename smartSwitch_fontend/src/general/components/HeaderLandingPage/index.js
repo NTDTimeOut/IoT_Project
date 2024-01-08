@@ -89,7 +89,7 @@ function HeaderLandingPage(props) {
 
     return (
         <div
-            className="HeaderLandingPage d-flex align-items-center sticky-top shadow-sm px-5 py-3 ps-5 bg-body"
+            className="HeaderLandingPage d-flex align-items-center sticky-top shadow-sm px-5 py-3 ps-5 bg-body bg-light"
             style={{ height: "60px" }}
         >
             <div
@@ -103,8 +103,8 @@ function HeaderLandingPage(props) {
                 <LogoDark className="d-none d-sm-block"/>
                 <LogoSmall height="100%" className="d-block d-sm-none"/>
             </NavLink>
-            <div className="d-none d-md-flex fw-bold fs-4 flex-fill justify-content-start mx-5">
-                Xin chào, {currentAccount?.fullname}
+            <div className="d-none d-md-flex fw-bold fs-4 flex-fill justify-content-start mx-5 text-dark">
+                Welcome to s-Switch, {currentAccount?.fullname}!
             </div>
             <div className="d-flex flex-fill justify-content-end">
                 <button
