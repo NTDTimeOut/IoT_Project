@@ -1,9 +1,5 @@
-import AirConditioner from "features/Room/Component/AirConditioner";
-import Camera from "features/Room/Component/Camera";
 import ElectricalDevice from "features/Room/Component/ElectricalDevice";
 import Lamp from "features/Room/Component/Lamp";
-import PowerSwitch from "features/Room/Component/PowerSwitch";
-import Security from "features/Room/Component/Security";
 import Sensor from "features/Room/Component/Sensor";
 import { thunkGetRoomsList } from "features/Room/roomSlice";
 import BaseLayout from "general/components/BaseLayout";
@@ -57,9 +53,7 @@ function DevicesListScreen(props) {
                             {devicesListOfHome?.filter(
                                 (device) =>
                                     device.deviceType === "Nhiệt độ, độ ẩm" ||
-                                    device.deviceType === "Cảm biến ánh sáng" ||
-                                    device.deviceType === "Cảm biến khói" ||
-                                    device.deviceType === "Cảm biến động tĩnh"
+                                    device.deviceType === "Cảm biến ánh sáng"
                             ).length > 0 && (
                                 <Sensor
                                     hideRoomName={false}
@@ -68,11 +62,7 @@ function DevicesListScreen(props) {
                                             device.deviceType ===
                                                 "Nhiệt độ, độ ẩm" ||
                                             device.deviceType ===
-                                                "Cảm biến khói" ||
-                                            device.deviceType ===
-                                                "Cảm biến ánh sáng" ||
-                                            device.deviceType ===
-                                                "Cảm biến động tĩnh"
+                                                "Cảm biến ánh sáng"
                                     )}
                                 />
                             )}
@@ -94,65 +84,17 @@ function DevicesListScreen(props) {
                                     )}
                                 />
                             )}
-                            {devicesListOfHome?.filter(
-                                (device) => device.deviceType === "Camera"
-                            ).length > 0 &&
-                                devicesListOfHome
-                                    ?.filter(
-                                        (device) =>
-                                            device.deviceType === "Camera"
-                                    )
-                                    .map((item) => (
-                                        <Camera
-                                            key={item._id}
-                                            hideRoomName={false}
-                                            deviceItem={item}
-                                        />
-                                    ))}
-                            {devicesListOfHome?.filter(
-                                (device) => device.deviceType === "Máy lạnh"
-                            ).length > 0 &&
-                                devicesListOfHome
-                                    ?.filter(
-                                        (device) =>
-                                            device.deviceType === "Máy lạnh"
-                                    )
-                                    .map((item) => (
-                                        <AirConditioner
-                                            key={item._id}
-                                            hideRoomName={false}
-                                            deviceItem={item}
-                                        />
-                                    ))}
+                            
 
+                            
                             {devicesListOfHome?.filter(
                                 (device) =>
-                                    device.deviceType === "Chuông chống trộm" ||
-                                    device.deviceType === "Khóa cửa" ||
-                                    device.deviceType === "Két sắt an toàn"
-                            ).length > 0 && (
-                                <Security
-                                    hideRoomName={false}
-                                    devicesList={devicesListOfHome?.filter(
-                                        (device) =>
-                                            device.deviceType ===
-                                                "Chuông chống trộm" ||
-                                            device.deviceType === "Khóa cửa" ||
-                                            device.deviceType ===
-                                                "Két sắt an toàn"
-                                    )}
-                                />
-                            )}
-                            {devicesListOfHome?.filter(
-                                (device) =>
-                                    device.deviceType === "Quạt" ||
-                                    device.deviceType === "Máy lọc không khí" ||
-                                    device.deviceType === "Máy hút ẩm"
+                                    device.deviceType === "Quạt"
                             ).length > 0 && (
                                 <div className="col-12 col-md-6">
                                     <div className="d-flex flex-column my-5 p-2 border-1 bg-white shadow-sm rounded-xl">
                                         <div className="d-flex m-3">
-                                            <div className="Camera_Name me-1">
+                                            <div className=" me-1">
                                                 Thiết bị điện
                                             </div>
                                         </div>
@@ -161,11 +103,7 @@ function DevicesListScreen(props) {
                                                 ?.filter(
                                                     (device) =>
                                                         device.deviceType ===
-                                                            "Quạt" ||
-                                                        device.deviceType ===
-                                                            "Máy lọc không khí" ||
-                                                        device.deviceType ===
-                                                            "Máy hút ẩm"
+                                                            "Quạt"
                                                 )
                                                 .map((item) => (
                                                     <ElectricalDevice
@@ -177,19 +115,7 @@ function DevicesListScreen(props) {
                                     </div>
                                 </div>
                             )}
-                            {devicesListOfHome?.filter(
-                                (device) =>
-                                    device.deviceType === "Công tắc" ||
-                                    device.deviceType === "Ổ cắm"
-                            ).length > 0 && (
-                                <PowerSwitch
-                                    devicesList={devicesListOfHome?.filter(
-                                        (device) =>
-                                            device.deviceType === "Công tắc" ||
-                                            device.deviceType === "Ổ cắm"
-                                    )}
-                                />
-                            )}
+                            
                         </div>
                     </div>
                 ) : (
