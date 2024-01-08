@@ -65,13 +65,13 @@ function DialogModal(props) {
             <Modal.Footer className='d-flex flex-row align-items-center justify-content-center'>
                 <div className='w-100 d-flex row'>
                     <Button
-                        className='font-weight-bold flex-grow-1 col mr-3'
+                        className='ButtonSecondary font-weight-bold flex-grow-1 col mr-3'
                         variant='secondary'
                         onClick={handleClose}>
                         {`Huỷ`}
                     </Button>
                     <Button
-                        className={`font-weight-bold flex-grow-1 col ml-3`}
+                        className={`ButtonPrimary font-weight-bold flex-grow-1 col ml-3`}
                         variant='info'
                         onClick={() => {
                             close && handleClose();

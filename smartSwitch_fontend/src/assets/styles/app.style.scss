@@ -34,7 +34,7 @@
 }
 
 .ButtonPrimary {
-    background-color: #3e97ff;
+    background-image: linear-gradient(to right, Blue , Aqua);
     color: #fff;
     font-size: 12px;
     font-weight: 600;
@@ -60,7 +60,7 @@
 }
 
 .ButtonDanger {
-    background-color: #c92f2f;
+    background-image: linear-gradient(red,Orange);
     color: #fff;
     font-size: 12px;
     font-weight: 600;
@@ -88,7 +88,8 @@
 }
 
 .ButtonCancel {
-    background-color: #eaeaea;
+
+    background-color: linear-gradient(to right, Gray, Blue);
     color: #303030;
     font-size: 12px;
     font-weight: 600;
