@@ -1,10 +1,10 @@
 const AppData = {
     //gender
-    genderOptions: [
-        { value: "Nam", text: "Nam" },
-        { value: "Nữ", text: "Nữ" },
-        { value: "Khác", text: "Khác" },
-    ],
+    // genderOptions: [
+    //     { value: "Nam", text: "Nam" },
+    //     { value: "Nữ", text: "Nữ" },
+    //     { value: "Khác", text: "Khác" },
+    // ],
     //category
     categoryOptions: [
         // { value: "security", text: "An ninh gia đình" },
@@ -48,40 +48,40 @@ const AppData = {
         { value: "4400", text: "Chế độ 2" },
         { value: "8000", text: "Chế độ 3" },
     ],
-    security: [
-        {
-            value: "Camera",
-            text: "Camera",
-            image: require("../../assets/images/camera.png"),
-        },
-        {
-            value: "Chuông chống trộm",
-            text: "Chuông chống trộm",
-            image: require("../../assets/images/chuong.png"),
-        },
-        {
-            value: "Khóa cửa",
-            text: "Khóa cửa",
-            image: require("../../assets/images/khoa.png"),
-        },
-        {
-            value: "Két sắt an toàn",
-            text: "Két sắt an toàn",
-            image: require("../../assets/images/ketsat.png"),
-        },
-    ],
-    powerSwitch: [
-        {
-            value: "Ổ cắm",
-            text: "Ổ cắm",
-            image: require("../../assets/images/ocam.png"),
-        },
-        {
-            value: "Công tắc",
-            text: "Công tắc",
-            image: require("../../assets/images/congtac.png"),
-        },
-    ],
+    // security: [
+    //     {
+    //         value: "Camera",
+    //         text: "Camera",
+    //         image: require("../../assets/images/camera.png"),
+    //     },
+    //     {
+    //         value: "Chuông chống trộm",
+    //         text: "Chuông chống trộm",
+    //         image: require("../../assets/images/chuong.png"),
+    //     },
+    //     {
+    //         value: "Khóa cửa",
+    //         text: "Khóa cửa",
+    //         image: require("../../assets/images/khoa.png"),
+    //     },
+    //     {
+    //         value: "Két sắt an toàn",
+    //         text: "Két sắt an toàn",
+    //         image: require("../../assets/images/ketsat.png"),
+    //     },
+    // ],
+    // powerSwitch: [
+    //     {
+    //         value: "Ổ cắm",
+    //         text: "Ổ cắm",
+    //         image: require("../../assets/images/ocam.png"),
+    //     },
+    //     {
+    //         value: "Công tắc",
+    //         text: "Công tắc",
+    //         image: require("../../assets/images/congtac.png"),
+    //     },
+    // ],
     lightEquipment: [
         {
             value: "Bóng đèn",
